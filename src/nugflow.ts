@@ -46,6 +46,7 @@ interface GlobalSettings {
   tombstoneMaxAge: number;
   shadowOffset: number;
   rubberMult: number;
+  autoSpawnRate: number;
 }
 
 //#endregion
@@ -57,7 +58,8 @@ const globalSettings = <GlobalSettings>{
   audioVolume: 0.45,
   tombstoneMaxAge: 1500,
   shadowOffset: 0.5,
-  rubberMult: 1
+  rubberMult: 1,
+  autoSpawnRate: 1
 };
 
 const bingoMp3 = new Audio('../res/bingo.mp3');
@@ -382,7 +384,7 @@ class Tombstone implements Entity {
 
     if (!tombstone) return false;
 
-    if (this.opacity < 0.25 || tombstone.opacity < 0.25 || tombstone.age < 1 || this.age < 1) {
+    if (this.opacity < 1 || tombstone.opacity < 1 || tombstone.age < 1 || this.age < 1) {
       return false
     }
 
@@ -518,7 +520,8 @@ function moveShadow() {
 }
 
 function updateLoop() {
-  if (Math.random() > 0.999) {
+
+  if (Math.random() > (1 - globalSettings.autoSpawnRate / 1000)) {
     tombstone(Math.floor(Math.random() * innerWidth));
   }
 
@@ -564,11 +567,13 @@ function bindSettings() {
   (document.getElementById('initialTombstoneSpeed') as HTMLInputElement).value = `${globalSettings.startingSpeed}`;
   (document.getElementById('shadowOffset') as HTMLInputElement).value = `${globalSettings.shadowOffset}`;
   (document.getElementById('rubberMult') as HTMLInputElement).value = `${globalSettings.rubberMult}`;
+  (document.getElementById('autoSpawnRate') as HTMLInputElement).value = `${globalSettings.autoSpawnRate}`;
   rebindViewModel('initialTombstoneSpeed');
   rebindViewModel('tombstoneMaxAge');
   rebindViewModel('audioVolume');
   rebindViewModel('shadowOffset');
   rebindViewModel('rubberMult');
+  rebindViewModel('autoSpawnRate');
 }
 
 function applySettings() {
@@ -577,6 +582,7 @@ function applySettings() {
   globalSettings.startingSpeed = +(<HTMLInputElement>document.getElementById('initialTombstoneSpeed')).value;
   globalSettings.shadowOffset = +(document.getElementById('shadowOffset') as HTMLInputElement).value
   globalSettings.rubberMult = +(document.getElementById('rubberMult') as HTMLInputElement).value
+  globalSettings.autoSpawnRate = +(document.getElementById('autoSpawnRate') as HTMLInputElement).value
 }
 
 function rebindViewModel(id: string) {

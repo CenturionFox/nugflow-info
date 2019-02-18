@@ -231,33 +231,43 @@
 					<tr>
 						<td class='tlabel'>Initial Tombstone Speed:</td>
 						<td><input class='tinput' type="number" min="1" max="1000" id="initialTombstoneSpeed"></td>
-						
+
 					</tr>
 					<tr>
 						<td class='tlabel'>Tombstone Max Age:</td>
 						<td><input class='tinput' type="number" min="600" max="15000" id="tombstoneMaxAge"></td>
-						
+
 					</tr>
 					<tr>
 						<td class='tlabel'>Audio Volume:</td>
-						<td><input class='tinput' type="range" min="0" max="1" step="0.01" id="audioVolume" oninput="rebindViewModel('audioVolume')" view='audioVolumeReadout'></td>
+						<td><input class='tinput' type="range" min="0" max="1" step="0.01" id="audioVolume"
+								oninput="rebindViewModel('audioVolume')" view='audioVolumeReadout'></td>
 						<td class='treadout'><span id="audioVolumeReadout">0.00</span></td>
 					</tr>
 					<tr>
 						<td class='tlabel'><span style='font-family: serif;'>B I N G O</span> Shadow Offset:</td>
-						<td><input class='tinput' type="range" min="0.05" max="2.5" step="0.05" id="shadowOffset" oninput="rebindViewModel('shadowOffset')" view='shadowOffsetReadout'></td>
+						<td><input class='tinput' type="range" min="0.05" max="2.5" step="0.05" id="shadowOffset"
+								oninput="rebindViewModel('shadowOffset')" view='shadowOffsetReadout'></td>
 						<td class='treadout'><span id="shadowOffsetReadout">0.00</span></td>
 					</tr>
 					<tr>
-							<td class='tlabel'>Tombstone Rubberiness Multiplier:</td>
-							<td><input class='tinput' type="range" min="1" max="3" step="0.5" id="rubberMult" oninput="rebindViewModel('rubberMult')" view='rubberMultReadout'></td>
-							<td class='treadout'><span id="rubberMultReadout">0.00</span></td>
-						</tr>
+						<td class='tlabel'>Tombstone Rubberiness Multiplier:</td>
+						<td><input class='tinput' type="range" min="1" max="3" step="0.5" id="rubberMult"
+								oninput="rebindViewModel('rubberMult')" view='rubberMultReadout'></td>
+						<td class='treadout'><span id="rubberMultReadout">0.00</span></td>
+					</tr>
+					<tr>
+						<td class='tlabel'>Automatic Spawn Rate:</td>
+						<td><input class='tinput' type="range" min="0" max="256" step="1" id="autoSpawnRate"
+								oninput="rebindViewModel('autoSpawnRate')" view='autoSpawnRateReadout'></td>
+						<td class='treadout'><span id="autoSpawnRateReadout">0.00</span></td>
+					</tr>
 				</table>
-				<input type="button" value="Apply" onclick="applySettings()"/>
-				<input type="button" value="OK" onclick="applySettings(); hideMenu('settingsMenu')"/>
+				<input type="button" value="Apply" onclick="applySettings()" />
+				<input type="button" value="OK" onclick="applySettings(); hideMenu('settingsMenu')" />
 			</form>
 		</div>
 	</div>
 </body>
+
 </html>
