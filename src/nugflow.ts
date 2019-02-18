@@ -591,4 +591,14 @@ function rebindViewModel(id: string) {
   view.innerText = self.value;
 }
 
+function resetSettings() {
+    globalSettings.startingSpeed= 5;
+    globalSettings.audioVolume= 0.45;
+    globalSettings.tombstoneMaxAge= 1500;
+    globalSettings.shadowOffset= 0.5;
+    globalSettings.rubberMult=1;
+    globalSettings.autoSpawnRate=1;
+    bindSettings();
+}
+
 //#endregion
