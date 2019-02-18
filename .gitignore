@@ -1,0 +1,6 @@
+.htaccess
+bin
+src/nope
+node_modules
+*.asd
+bingo.wav

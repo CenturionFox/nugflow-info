@@ -1,0 +1,224 @@
+<html>
+
+<head>
+	<script lang="javascript" src="./bin/nugflow.js"></script>
+	<link rel="stylesheet" href="https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css" />
+	<link rel="stylesheet" href="res/nugflow.css" />
+	<meta charset="utf-8" />
+	<title>ｎｕｇｆｌｏｗ．ｉｎｆｏ</title>
+</head>
+
+<body onload="main()">
+	<h1 class='bingo' id='bingo'>B I N G O</h1>
+	<div class='overlay' id='overlay'></div>
+	<div class='menu' id='menu'>
+		<button class='menuButton' onclick='showMenu()'></button>
+	</div>
+	<div class='window' id='settingsMenu' style='visibility: hidden;'>
+		<button class='exitButton' onclick='hideMenu()' id='hideButton'></button>
+		<div class='windowContents'>
+			<div style="height: 15%">
+				<h2>Credits</h2>
+				<p>Special thanks to the fine people of the Wolfgun discord server.</p>
+			</div>
+			<div class='scrollingCredits'>
+				<table class="credits">
+					<tbody>
+						<tr>
+							<td>Site and Code</td>
+							<td>satyrnidae</td>
+							<td><a href='https://centurionfox.net'>https://centurionfox.net</a></td>
+						</tr>
+						<tr>
+							<td><a href='res/bingo.mp3'>Bingo Sound Effect #1</a></td>
+							<td>satyrnidae</td>
+						</tr>
+						<tr>
+							<td><a href='res/snoof.mp3'>Bingo Sound Effect #2</a></td>
+							<td>Snoof</td>
+						</tr>
+						<tr>
+							<td><a href='res/centurion.png'>Background image</a></td>
+							<td>Snoof</td>
+						</tr>
+						<tr>
+							<td><a href='res/oof.mp3'>Oof Sound Effect #1</a></td>
+							<td>Mojang / C418, <i>Minecraft</i></td>
+							<td><a href='https://minecraft.net'>https://minecraft.net</a></td>
+						</tr>
+						<tr>
+							<td><a href='res/oof2.mp3'>Oof Sound Effect #2</a></td>
+							<td>Roblox Corporation, <i>ROBLOX</i></td>
+							<td><a href='https://www.roblox.com'>https://www.roblox.com</a></td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/tombstone.png'>Basic Tombstone</a></td>
+							<td>Landon Podbielski/Adult Swim Games, *Duck Game*</td>
+							<td><a
+									href='https://www.adultswim.com/games/pc-console/duck-game/'>https://www.adultswim.com/games/pc-console/duck-game/</a>
+							</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/buffstone.png'>Buff Tombstone</a></td>
+							<td>half/moon</td>
+							<td><a href='https://halfmoonplanet.bandcamp.com/'>https://halfmoonplanet.bandcamp.com/</a>
+							</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/blankstone.png'>Blank Tombstone</a></td>
+							<td>see</td>
+							<td><a href='https://seebeyond.space'>https://seebeyond.space</a></td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/seestone.png'>Shortened Tombstone #1</a></td>
+							<td>see</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/seestone1.png'>Shortened Tombstone #2</a></td>
+							<td>see</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/seestone2.png'>Shortened Tombstone #3</a></td>
+							<td>see</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/seestone3.png'>Shortened Tombstone #4</a></td>
+							<td>see</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/seestone4.png'>Shortened Tombstone #5</a></td>
+							<td>see</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/shortstone.png'>Shortened Tombstone #6</a></td>
+							<td>see</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/googlestone.png'>Googly Eye Tombstone</a></td>
+							<td>Khamelot</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/sideeyestone.png'>Side-Eye Tombstone</a></td>
+							<td>Khamelot</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/eyestone.png'>Wide-Eye Tombstone</a></td>
+							<td>Khamelot</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/heartstone.png'>Heart Tombstone</a></td>
+							<td>satyrnidae</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/transstone.png'>Trans Pride Tombstone</a></td>
+							<td>satyrnidae</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/tombstowone.png'>TombstOwOne</a></td>
+							<td>GHOST</td>
+							<td><a href='https://twitter.com/heli0ns'>https://twitter.com/heli0ns</a></td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/pridestone.png'>Rainbow / Pride Tombstone</a></td>
+							<td>GHOST</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/oofstone.png'>OOF Stone</a></td>
+							<td>GHOST</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/notfinestone.png'>Not Fine Stone</a></td>
+							<td>kc greene, edit by GHOST</td>
+							<td><a href='https://kcgreendotcom.com/index.html'>https://kcgreendotcom.com/index.html</a>
+							</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/wolfstone.png'>Wolfgun Logo Stone #1</a></td>
+							<td>Yrrzy</td>
+							<td><a href='http://yrrzy.tumblr.com/'>http://yrrzy.tumblr.com/</a></td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/oldwolfstone.png'>Wolfgun Logo Stone #2</a></td>
+							<td>Connie</td>
+							<td><a href='https://twitter.com/connieBarkshark'>https://twitter.com/connieBarkshark</a>
+							</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/thinkstone.png'>Thinking Tombstone</a></td>
+							<td>Whisper</td>
+							<td><a href='https://twitter.com/catloaf'>https://twitter.com/catloaf</a></td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/bstone.png'>B Tombstone</a></td>
+							<td>Flowers</td>
+							<td><a href='https://twitter.com/radioflower'>https://twitter.com/radioflower</a></td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/istone.png'>I Tombstone</a></td>
+							<td>Flowers</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/nstone.png'>N Tombstone</a></td>
+							<td>Flowers</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/gstone.png'>G Tombstone</a></td>
+							<td>Flowers</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/ostone.png'>O Tombstone</a></td>
+							<td>Flowers</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/ohnostone.png'>Ö Tombstone</a></td>
+							<td>Flowers</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/flowerstone.png'>Flowers Tombstone</a></td>
+							<td>Flowers</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/bingoboxstone.png'>Bingo Box Tombstone</a></td>
+							<td>Flowers</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/ghoststone.png'>GHOST Tombstone</a></td>
+							<td>GHOST, edit by Flowers</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/snoofstone.png'>Snoof Tombstone</a></td>
+							<td>GHOST, edit by Flowers</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/weirdseedstone.png'>Kiwi Tombstone</a></td>
+							<td>chunji/kiwi, edit by Flowers</td>
+							<td><a href='https://twitter.com/chunjihuli'>https://twitter.com/chunjihuli</a></td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/moiststone.png'>K/DEN Tombstone</a></td>
+							<td>K/DEN, edit by Flowers</td>
+							<td><a href='https://kden.bandcamp.com'>https://kden.bandcamp.com</a></td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/fancybingo.png'>Bingo Fancy</a></td>
+							<td>Lucy Poindexter</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/bingo.png'>Bingo Flannel</a></td>
+							<td>Flannel</td>
+						</tr>
+						<tr>
+							<td><a href='res/tombstones/frankerfacestone.png'>Frankerfacez Tombstone</a></td>
+							<td></td>
+							<td><a
+									href='https://cdn.frankerfacez.com/emoticon/308378/4'>https://cdn.frankerfacez.com/emoticon/308378/4</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "charset": "utf",
+    "outDir": "./bin",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "sourceRoot": "../src",
+    "module": "none"
+  },
+  "include": [ "src/**/*.ts" ],
+  "exclude": [ "bin/**/*.js",
+  "src/nope/**/*.*" ]
+}

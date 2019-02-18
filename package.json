@@ -1,0 +1,24 @@
+{
+  "name": "nugflow-info",
+  "version": "1.0.0",
+  "description": "The nugflow website",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "node --inspect-brk ./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/centurionfox/nugflow-info.git"
+  },
+  "author": "satyrnidae",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/centurionfox/nugflow-info/issues"
+  },
+  "homepage": "https://github.com/centurionfox/nugflow-info#readme",
+  "dependencies": {
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3"
+  }
+}
