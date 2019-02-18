@@ -354,10 +354,6 @@ class Tombstone implements Entity {
     }
   }
 
-  resolveCollision(maxY: number) {
-
-  }
-
   draw(): void {
     this.tombstone.style.visibility = this.imageLoaded ? "visible" : "hidden";
     this.tombstone.style.left = `${this.x}px`;
