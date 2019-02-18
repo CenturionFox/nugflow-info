@@ -116,6 +116,22 @@ tombstoneDefinitions.forEach(def => {
   images.push(img);
 });
 
+//precache UI elements
+['res/ui/exitbutton.png',
+ 'res/ui/exitbutton.hover.png',
+ 'res/ui/exitbutton.activate.png',
+ 'res/ui/menubutton.png',
+ 'res/ui/menubutton.hover.png',
+ 'res/ui/menubutton.activate.png',
+ 'res/ui/settingsbutton.png',
+ 'res/ui/settingsbutton.hover.png',
+ 'res/ui/settingsbutton.activate.png'].forEach(item => {
+  const img = new Image();
+  img.src = item;
+  img.onload = () => console.log('Loaded', item);
+  images.push(img);
+});
+
 //#endregion
 
 //#region Utility Functions
