@@ -343,7 +343,7 @@ class Tombstone implements Entity {
       }
     }
     if (this.age >= globalSettings.tombstoneMaxAge - 500 && this.age < globalSettings.tombstoneMaxAge) {
-      this.speed = 1;
+      this.speed *= 0.95;
       this.opacity -= 0.005;
       if (this.opacity <= 0) {
         this.opacity = 0;
