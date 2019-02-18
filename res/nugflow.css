@@ -60,7 +60,8 @@ body {
 .menu {
   position: relative;
   margin-left: auto;
-  right: 0;
+  top: 15px;
+  right: 15px;
   float: right;
   display: block;
   z-index: 50;
@@ -77,6 +78,7 @@ button {
 }
 .menuButton {
   background-image: url('ui/menubutton.png');
+  top: 10px;
 }
 .menuButton:hover {
   background-image: url('ui/menubutton.hover.png');
@@ -84,20 +86,29 @@ button {
 .menuButton:active {
   background-image: url('ui/menubutton.activate.png');
 }
+.settingsButton {
+  background-image: url('ui/settingsbutton.png');
+  top: 10px;
+}
+.settingsButton:hover {
+  background-image: url('ui/settingsbutton.hover.png');
+}
+.settingsButton:active {
+  background-image: url('ui/settingsbutton.activate.png');
+}
 .window {
-  position: relative;
+  position: absolute;
   display: block;
   width: 50%;
   height: 75%;
   margin: auto auto auto auto;
-  transform: translate(0px, 12.5%);
-  background-color: #050702;
-  opacity: 0.75;
+  transform: translate(50%, 12.5%);
+  background-color: rgba(23,23,23,0.75);
   border-radius: 45px;
   z-index: 60;
 }
 .windowContents {
-  opacity: 1 !important;
+  opacity: 1;
   display: block;
   width: 90%;
   height: 90%;
@@ -120,14 +131,33 @@ button {
 .exitButton:active {
   background-image: url('ui/exitbutton.activate.png');
 }
-.credits {
+table {
   width: 100%;
 }
 .scrollingCredits {
   overflow-y: scroll;
   height: 85%;
 }
-a, a:active, a:visited, a:hover {
+a {
   text-decoration: underline;
-  color: white !important;
+  color: white;
+}
+a:active {
+  color: gray;
+}
+a:hover {
+  color: #ff375e
+}
+a.visited {
+  color: gray;
+}
+td {
+  text-align: left;
+}
+.tlabel {
+  text-align: right;
+}
+input[type='number'] {
+  text-align: right;
+  background-color: white;
 }

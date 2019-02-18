@@ -44,6 +44,7 @@ interface GlobalSettings {
   startingSpeed: number;
   audioVolume: number;
   tombstoneMaxAge: number;
+  shadowOffset: number;
 }
 
 //#endregion
@@ -53,7 +54,8 @@ interface GlobalSettings {
 const globalSettings = <GlobalSettings>{
   startingSpeed: 5,
   audioVolume: 0.45,
-  tombstoneMaxAge: 1500
+  tombstoneMaxAge: 1500,
+  shadowOffset: 0.5
 };
 
 const bingoMp3 = new Audio('../res/bingo.mp3');
@@ -314,7 +316,7 @@ class Tombstone implements Entity {
     } else {
       this.speed = this.speed * -this.tombstoneType.rubberness;
       this.y = window.innerHeight - this.tombstone.height;
-      if(Math.abs(this.speed) >= 1) {
+      if (Math.abs(this.speed) >= 1) {
         this.y -= this.tombstoneType.rubberness;
       } else {
         this.speed = 0;
@@ -377,7 +379,7 @@ class Tombstone implements Entity {
         tombstone.speed = Math.max(otherOldSpeed, myOldSpeed)
         this.speed = Math.min(otherOldSpeed, myOldSpeed) + (1 * -this.tombstoneType.rubberness)
 
-        if(Math.abs(this.speed) >= 1) {
+        if (Math.abs(this.speed) >= 1) {
           this.y -= this.tombstoneType.rubberness;
         } else {
           this.speed = 0;
@@ -474,24 +476,24 @@ function main() {
   setInterval(moveShadow, 1500);
 }
 
-var shadow = [10, 10];
+var shadow = [globalSettings.shadowOffset, globalSettings.shadowOffset];
 
 function moveShadow() {
-  if (shadow[0] == 10) {
-    if (shadow[1] == -10) {
-      shadow[1] = 10
+  if (shadow[0] == globalSettings.shadowOffset) {
+    if (shadow[1] == -globalSettings.shadowOffset) {
+      shadow[1] = globalSettings.shadowOffset
     } else {
-      shadow[0] = -10
+      shadow[0] = -globalSettings.shadowOffset
     }
   } else {
-    if (shadow[1] == -10) {
-      shadow[0] = 10
+    if (shadow[1] == -globalSettings.shadowOffset) {
+      shadow[0] = globalSettings.shadowOffset
     } else {
-      shadow[1] = -10
+      shadow[1] = -globalSettings.shadowOffset
     }
   }
 
-  document.getElementById('bingo').style.textShadow = `#ff375e ${shadow[0]}px ${shadow[1]}px`;
+  document.getElementById('bingo').style.textShadow = `#ff375e ${shadow[0]}vw ${shadow[1]}vw`;
 }
 
 function updateLoop() {
@@ -525,15 +527,40 @@ function tombstone(xPos: number) {
   if (entities.indexOf(tombstone) < 0) entities.push(tombstone);
 }
 
-function showMenu() {
-  document.getElementById('settingsMenu').style.visibility = 'visible';
+function showMenu(menuName: string) {
+  document.getElementById(menuName).style.visibility = 'visible';
   document.getElementById('menu').style.visibility = 'hidden';
 }
 
-function hideMenu() {
-  document.getElementById('settingsMenu').style.visibility = 'hidden';
+function hideMenu(menuName: string) {
+  document.getElementById(menuName).style.visibility = 'hidden';
   document.getElementById('menu').style.visibility = 'visible';
 }
 
+function bindSettings() {
+  (document.getElementById('tombstoneMaxAge') as HTMLInputElement).value = `${globalSettings.tombstoneMaxAge}`;
+  (document.getElementById('audioVolume') as HTMLInputElement).value = `${globalSettings.audioVolume}`;
+  (document.getElementById('initialTombstoneSpeed') as HTMLInputElement).value = `${globalSettings.startingSpeed}`;
+  (document.getElementById('shadowOffset') as HTMLInputElement).value = `${globalSettings.shadowOffset}`;
+  rebindViewModel('audioVolume');
+  rebindViewModel('shadowOffset');
+}
+
+function applySettings() {
+  globalSettings.tombstoneMaxAge = +(<HTMLInputElement>document.getElementById('tombstoneMaxAge')).value;
+  globalSettings.audioVolume = +(<HTMLInputElement>document.getElementById('audioVolume')).value;
+  globalSettings.startingSpeed = +(<HTMLInputElement>document.getElementById('initialTombstoneSpeed')).value;
+  globalSettings.shadowOffset = +(document.getElementById('shadowOffset') as HTMLInputElement).value
+}
+
+function rebindViewModel(id: string) {
+  var self = document.getElementById(id) as HTMLInputElement;
+  if(!self) return;
+  var viewId = self.getAttribute('view');
+  if(!viewId) return;
+  var view = document.getElementById(viewId)
+  if(!view) return;
+  view.innerText = self.value;
+}
 
 //#endregion

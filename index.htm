@@ -1,31 +1,33 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-	<script lang="javascript" src="./bin/nugflow.js"></script>
-	<link rel="stylesheet" href="https://raw.githubusercontent.com/necolas/normalize.css/master/normalize.css" />
+	<link rel="stylesheet" href="res/normalize.css" />
 	<link rel="stylesheet" href="res/nugflow.css" />
+	<script lang="javascript" src="./bin/nugflow.js"></script>
 	<meta charset="utf-8" />
 	<title>ｎｕｇｆｌｏｗ．ｉｎｆｏ</title>
 </head>
 
-<body onload="main()">
+<body onload="main(); bindSettings()">
 	<h1 class='bingo' id='bingo'>B I N G O</h1>
 	<div class='overlay' id='overlay'></div>
 	<div class='menu' id='menu'>
-		<button class='menuButton' onclick='showMenu()'></button>
+		<button class='menuButton' onclick='showMenu("creditsMenu")'></button>
+		<button class='settingsButton' onclick='bindSettings(); showMenu("settingsMenu");'></button>
 	</div>
-	<div class='window' id='settingsMenu' style='visibility: hidden;'>
-		<button class='exitButton' onclick='hideMenu()' id='hideButton'></button>
+	<div class='window' id='creditsMenu' style='visibility: hidden;'>
+		<button class='exitButton' onclick='hideMenu("creditsMenu")' id='hideButton'></button>
 		<div class='windowContents'>
 			<div style="height: 15%">
 				<h2>Credits</h2>
 				<p>Special thanks to the fine people of the Wolfgun discord server.</p>
 			</div>
 			<div class='scrollingCredits'>
-				<table class="credits">
+				<table>
 					<tbody>
 						<tr>
-							<td>Site and Code</td>
+							<td><a href='https://github.com/centurionfox/nugflow-info'>Site and Code</a></td>
 							<td>satyrnidae</td>
 							<td><a href='https://centurionfox.net'>https://centurionfox.net</a></td>
 						</tr>
@@ -219,6 +221,34 @@
 			</div>
 		</div>
 	</div>
+	<div class='window' id='settingsMenu' style="visibility: hidden;">
+		<button class='exitButton' onclick='hideMenu("settingsMenu")' id='hideButton'></button>
+		<div class='windowContents'>
+			<h2>Settings</h2>
+			<p>Adjust global simulation settings. More to come (possibly).</p>
+			<form onshow="">
+				<table>
+					<tr>
+						<td class='tlabel'>Initial Tombstone Speed:</td>
+						<td><input type="number" id="initialTombstoneSpeed"></td>
+					</tr>
+					<tr>
+						<td class='tlabel'>Tombstone Max Age:</td>
+						<td><input type="number" min="600" id="tombstoneMaxAge"></td>
+					</tr>
+					<tr>
+						<td class='tlabel'>Audio Volume:</td>
+						<td><input type="range" min="0" max="1" step="0.01" id="audioVolume" oninput="rebindViewModel('audioVolume')" view='audioVolumeReadout'>&nbsp;&nbsp;<span id="audioVolumeReadout">0.00</span></td>
+					</tr>
+					<tr>
+						<td class='tlabel'><span style='font-family: serif;'>B I N G O</span> Shadow Offset:</td>
+						<td><input type="range" min="0.05" max="2.5" step="0.05" id="shadowOffset" oninput="rebindViewModel('shadowOffset')" view='shadowOffsetReadout'>&nbsp;&nbsp;<span id="shadowOffsetReadout">0.00</span></td>
+					</tr>
+				</table>
+				<input type="button" value="Apply" onclick="applySettings()"/>
+				<input type="button" value="OK" onclick="applySettings(); hideMenu('settingsMenu')"/>
+			</form>
+		</div>
+	</div>
 </body>
-
 </html>
