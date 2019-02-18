@@ -97,25 +97,29 @@ button {
   background-image: url('ui/settingsbutton.activate.png');
 }
 .window {
-  position: absolute;
+  position: fixed;
   display: block;
-  width: 50%;
-  height: 75%;
-  margin: auto auto auto auto;
-  transform: translate(50%, 12.5%);
+  max-width: 50%;
+  max-height: 85%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: rgba(23,23,23,0.75);
   border-radius: 45px;
   z-index: 60;
 }
 .windowContents {
-  opacity: 1;
-  display: block;
-  width: 90%;
-  height: 90%;
-  margin: auto auto auto auto;
-  transform: translate(0px, 5%);
+  margin: 22.5px 22.5px 22.5px 22.5px;
   align-content: center;
   text-align: center;
+  position: relative;
+  height: inerit;
+  overflow: auto;
+  max-height: inherit;
+}
+.subscroll {
+  overflow-y: scroll;
+  max-height: 30vw;
 }
 .exitButton {
   position: relative;
@@ -130,13 +134,6 @@ button {
 }
 .exitButton:active {
   background-image: url('ui/exitbutton.activate.png');
-}
-table {
-  width: 100%;
-}
-.scrollingCredits {
-  overflow-y: scroll;
-  height: 85%;
 }
 a {
   text-decoration: underline;
@@ -161,6 +158,10 @@ input[type='number'] {
   text-align: right;
   background-color: white;
 }
+input[type='button'] {
+  min-width: 100px;
+  min-height: 28px;
+}
 input:invalid {
   background-color: #ff375e;
 }
@@ -169,5 +170,18 @@ input:invalid {
 }
 .treadout {
   text-align: left;
-  width: 6em;
+  padding-left: 10px;
+  width: 1em;
+}
+section {
+  display: table;
+  text-align: left;
+}
+section div {
+  display: table-row;
+}
+section div div {
+  box-sizing: border-box;
+  display: table-cell;
+  padding: 1px;
 }
