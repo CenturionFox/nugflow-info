@@ -230,11 +230,13 @@
 				<table>
 					<tr>
 						<td class='tlabel'>Initial Tombstone Speed:</td>
-						<td><input class='tinput' type="number" id="initialTombstoneSpeed"></td>
+						<td><input class='tinput' type="number" min="1" max="1000" id="initialTombstoneSpeed"></td>
+						
 					</tr>
 					<tr>
 						<td class='tlabel'>Tombstone Max Age:</td>
-						<td><input class='tinput' type="number" min="600" id="tombstoneMaxAge"></td>
+						<td><input class='tinput' type="number" min="600" max="15000" id="tombstoneMaxAge"></td>
+						
 					</tr>
 					<tr>
 						<td class='tlabel'>Audio Volume:</td>
@@ -246,6 +248,11 @@
 						<td><input class='tinput' type="range" min="0.05" max="2.5" step="0.05" id="shadowOffset" oninput="rebindViewModel('shadowOffset')" view='shadowOffsetReadout'></td>
 						<td class='treadout'><span id="shadowOffsetReadout">0.00</span></td>
 					</tr>
+					<tr>
+							<td class='tlabel'>Tombstone Rubberiness Multiplier:</td>
+							<td><input class='tinput' type="range" min="1" max="3" step="0.5" id="rubberMult" oninput="rebindViewModel('rubberMult')" view='rubberMultReadout'></td>
+							<td class='treadout'><span id="rubberMultReadout">0.00</span></td>
+						</tr>
 				</table>
 				<input type="button" value="Apply" onclick="applySettings()"/>
 				<input type="button" value="OK" onclick="applySettings(); hideMenu('settingsMenu')"/>

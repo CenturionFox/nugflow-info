@@ -45,6 +45,7 @@ interface GlobalSettings {
   audioVolume: number;
   tombstoneMaxAge: number;
   shadowOffset: number;
+  rubberMult: number;
 }
 
 //#endregion
@@ -55,7 +56,8 @@ const globalSettings = <GlobalSettings>{
   startingSpeed: 5,
   audioVolume: 0.45,
   tombstoneMaxAge: 1500,
-  shadowOffset: 0.5
+  shadowOffset: 0.5,
+  rubberMult: 1
 };
 
 const bingoMp3 = new Audio('../res/bingo.mp3');
@@ -312,9 +314,9 @@ class Tombstone implements Entity {
           this.speed++
         }
       }
-      else { this.speed = this.speed * -this.tombstoneType.rubberness; }
+      else { this.speed = this.speed * -(this.tombstoneType.rubberness* globalSettings.rubberMult); }
     } else {
-      this.speed = this.speed * -this.tombstoneType.rubberness;
+      this.speed = this.speed * -(this.tombstoneType.rubberness * globalSettings.rubberMult);
       this.y = window.innerHeight - this.tombstone.height;
       if (Math.abs(this.speed) >= 1) {
         this.y -= this.tombstoneType.rubberness;
@@ -349,6 +351,9 @@ class Tombstone implements Entity {
   kill(): void {
     this.isAlive = false;
     this.age = 0;
+    if(this.shine) {
+      this.shine.kill();
+    }
     if (this.tombstone.remove) {
       return this.tombstone.remove();
     }
@@ -377,10 +382,10 @@ class Tombstone implements Entity {
         const myOldSpeed = this.speed
 
         tombstone.speed = Math.max(otherOldSpeed, myOldSpeed)
-        this.speed = Math.min(otherOldSpeed, myOldSpeed) + (1 * -this.tombstoneType.rubberness)
+        this.speed = Math.min(otherOldSpeed, myOldSpeed) + (1 * -(this.tombstoneType.rubberness * globalSettings.rubberMult))
 
         if (Math.abs(this.speed) >= 1) {
-          this.y -= this.tombstoneType.rubberness;
+          this.y -= (this.tombstoneType.rubberness * globalSettings.rubberMult);
         } else {
           this.speed = 0;
         }
@@ -542,8 +547,12 @@ function bindSettings() {
   (document.getElementById('audioVolume') as HTMLInputElement).value = `${globalSettings.audioVolume}`;
   (document.getElementById('initialTombstoneSpeed') as HTMLInputElement).value = `${globalSettings.startingSpeed}`;
   (document.getElementById('shadowOffset') as HTMLInputElement).value = `${globalSettings.shadowOffset}`;
+  (document.getElementById('rubberMult') as HTMLInputElement).value = `${globalSettings.rubberMult}`;
+  rebindViewModel('initialTombstoneSpeed');
+  rebindViewModel('tombstoneMaxAge');
   rebindViewModel('audioVolume');
   rebindViewModel('shadowOffset');
+  rebindViewModel('rubberMult');
 }
 
 function applySettings() {
@@ -551,6 +560,7 @@ function applySettings() {
   globalSettings.audioVolume = +(<HTMLInputElement>document.getElementById('audioVolume')).value;
   globalSettings.startingSpeed = +(<HTMLInputElement>document.getElementById('initialTombstoneSpeed')).value;
   globalSettings.shadowOffset = +(document.getElementById('shadowOffset') as HTMLInputElement).value
+  globalSettings.rubberMult = +(document.getElementById('rubberMult') as HTMLInputElement).value
 }
 
 function rebindViewModel(id: string) {

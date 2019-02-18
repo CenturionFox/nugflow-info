@@ -161,6 +161,9 @@ input[type='number'] {
   text-align: right;
   background-color: white;
 }
+input:invalid {
+  background-color: #ff375e;
+}
 .tinput {
   width: 100%;
 }
