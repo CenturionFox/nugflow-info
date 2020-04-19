@@ -64,12 +64,12 @@ const globalSettings = <GlobalSettings>{
 
 const bingoMp3 = new Audio('../res/bingo.mp3');
 bingoMp3.load();
-const snoofMp3 = new Audio('../res/snoof.mp3');
-snoofMp3.load();
+const karaMp3 = new Audio('../res/kara.mp3');
+karaMp3.load();
 const oofMp3 = new Audio('../res/oof.mp3');
-snoofMp3.load();
+oofMp3.load();
 const oof2Mp3 = new Audio('../res/oof2.mp3');
-snoofMp3.load();
+oof2Mp3.load();
 const images: HTMLImageElement[] = [];
 
 const tombstoneDefinitions = [
@@ -86,7 +86,7 @@ const tombstoneDefinitions = [
   <TombstoneDefinition>{ rubberness: 0.6, soundSource: "../res/bingo.mp3", path: "../res/tombstones/ohnostone.png", weight: 4 },
   <TombstoneDefinition>{ rubberness: 0.15, soundSource: "../res/oof.mp3", path: "../res/tombstones/oofstone.png", weight: 2 },
   <TombstoneDefinition>{ rubberness: 0.15, soundSource: "../res/oof2.mp3", path: "../res/tombstones/oofstone.png", weight: 2 },
-  <TombstoneDefinition>{ rubberness: 0.25, soundSource: "../res/snoof.mp3", path: "../res/tombstones/snoofstone.png", weight: 1 },
+  <TombstoneDefinition>{ rubberness: 0.25, soundSource: "../res/kara.mp3", path: "../res/tombstones/karastone.png", weight: 1 },
   <TombstoneDefinition>{ rubberness: 0.15, soundSource: "../res/bingo.mp3", path: "../res/tombstones/thinkstone.png", weight: 4 },
   <TombstoneDefinition>{ rubberness: 0.15, soundSource: "../res/bingo.mp3", path: "../res/tombstones/tombstone.png", weight: 64 },
   <TombstoneDefinition>{ rubberness: 0.01, soundSource: "../res/bingo.mp3", path: "../res/tombstones/tombstowone.png", weight: 4 },
